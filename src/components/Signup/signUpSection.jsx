@@ -11,9 +11,9 @@ class SignUpSection extends Component {
   state = {};
   render() {
     return (
-      <div className='signUp-section'>
-        <SignUpPageForm />
-      </div>
+        <div className='signUp-section'>
+          <SignUpPageForm />
+        </div>
     );
   }
 }

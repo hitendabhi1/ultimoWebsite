@@ -5,11 +5,11 @@ import ReCAPTCHA from "react-google-recaptcha";
 import "../../style/homePage/signUpFrom.scss";
 class SignUpForm extends Component {
   state = {
-    firstName: "",
-    lastName: "",
-    emailAddress: "",
-    phoneNumber: "",
-    country: "",
+    FNAME: "",
+    LNAME: "",
+    EMAIL: "",
+    PHONE_NUMBER: "",
+    COUNTRY: "",
     check: false,
     formHit: false,
     formResponse: "",
@@ -18,8 +18,8 @@ class SignUpForm extends Component {
 
   onHandleInput = (event) => {
     this.setState({ [event.target.name]: event.target.value });
-    if (this.state.emailAddress.includes("@")) {
-      console.log(this.state.emailAddress.split("@").length);
+    if (this.state.EMAIL.includes("@")) {
+      console.log(this.state.EMAIL.split("@").length);
     }
   };
 
@@ -35,15 +35,26 @@ class SignUpForm extends Component {
     }
   };
   submitForm = async () => {
-    let phoneNumber = this.state.phoneNumber;
+    let PHONE_NUMBER = this.state.PHONE_NUMBER;
 
-    if (this.state.phoneNumber.length === 0) {
-      phoneNumber = 0;
+    if (this.state.PHONE_NUMBER.length === 0) {
+      PHONE_NUMBER = 0;
     }
     if (this.state.captureValue.length !== 0) {
-      await fetch(
-        `https://ultimo-mailchimp-api.herokuapp.com/userPost/${this.state.firstName}/${this.state.lastName}/${this.state.emailAddress}/${phoneNumber}/${this.state.country}`
-      )
+      const requestOptions = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          FNAME: this.state.FNAME,
+          LNAME: this.state.LNAME,
+          EMAIL: this.state.EMAIL,
+          PHONE_NUMBER: this.state.PHONE_NUMBER,
+          COUNTRY: this.state.COUNTRY
+        })
+      }
+      await fetch('https://ultimo.gg/userPost/index.php', requestOptions)
         .then((response) => response.text())
         .then(
           function (result) {
@@ -66,11 +77,11 @@ class SignUpForm extends Component {
 
             this.setState({
               formHit: true,
-              firstName: "",
-              lastName: "",
-              emailAddress: "",
-              country: "",
-              phoneNumber: "",
+              FNAME: "",
+              LNAME: "",
+              EMAIL: "",
+              COUNTRY: "",
+              PHONE_NUMBER: "",
               check: false,
             });
           }.bind(this)
@@ -98,19 +109,19 @@ class SignUpForm extends Component {
 
   render() {
     let disableButton =
-      this.state.emailAddress !== "" &&
-      this.state.firstName !== "" &&
-      this.isValid(this.state.firstName) === true &&
-      this.isValid(this.state.lastName) === true &&
-      this.isValid(this.state.country) === true &&
-      this.isValid(this.state.emailAddress) === true &&
-      this.isValid(this.state.phoneNumber) === true &&
+      this.state.EMAIL !== "" &&
+      this.state.FNAME !== "" &&
+      this.isValid(this.state.FNAME) === true &&
+      this.isValid(this.state.LNAME) === true &&
+      this.isValid(this.state.COUNTRY) === true &&
+      this.isValid(this.state.EMAIL) === true &&
+      this.isValid(this.state.PHONE_NUMBER) === true &&
       this.state.captureValue.length !== 0 &&
-      this.state.lastName &&
-      this.state.country !== "" &&
-      this.state.emailAddress.includes("@") &&
+      this.state.LNAME &&
+      this.state.COUNTRY !== "" &&
+      this.state.EMAIL.includes("@") &&
       this.state.check &&
-      this.state.emailAddress.split("@").length < 3
+      this.state.EMAIL.split("@").length < 3
         ? "submit-button "
         : "submit-button button-disable";
 
@@ -129,18 +140,18 @@ class SignUpForm extends Component {
             <label>First Name*</label>
             <input
               type='text'
-              name='firstName'
+              name='FNAME'
               onChange={this.onHandleInput}
-              value={this.state.firstName}
+              value={this.state.FNAME}
             ></input>
           </div>
           <div className='field'>
             <label>Last Name*</label>
             <input
               type='text'
-              name='lastName'
+              name='LNAME'
               onChange={this.onHandleInput}
-              value={this.state.lastName}
+              value={this.state.LNAME}
             ></input>
           </div>
 
@@ -148,27 +159,27 @@ class SignUpForm extends Component {
             <label>Phone Number (optional)</label>
             <input
               type='tel'
-              name='phoneNumber'
+              name='PHONE_NUMBER'
               onChange={this.onHandleInput}
-              value={this.state.phoneNumber}
+              value={this.state.PHONE_NUMBER}
             ></input>
           </div>
           <div className='field'>
-            <label>Country*</label>
+            <label>COUNTRY*</label>
             <input
               type='text'
-              name='country'
+              name='COUNTRY'
               onChange={this.onHandleInput}
-              value={this.state.country}
+              value={this.state.COUNTRY}
             ></input>
           </div>
           <div className='field email'>
             <label>Email Address*</label>
             <input
               type='text'
-              name='emailAddress'
+              name='EMAIL'
               onChange={this.onHandleInput}
-              value={this.state.emailAddress}
+              value={this.state.EMAIL}
             ></input>
           </div>
           <div className='check-box'>

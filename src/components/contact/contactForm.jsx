@@ -25,7 +25,7 @@ class ContactForm extends Component {
               <input type='text'></input>
             </div>
             <div className='field-group_top'>
-              <label>Country Of Residence</label>
+              <label>COUNTRY Of Residence</label>
               <input type='text'></input>
             </div>
 

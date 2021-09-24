@@ -1,0 +1,61 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "e949dec6f54b0917dbd3abaa137c7932",
+    "packages": [
+        {
+            "name": "ems-api/php-client",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ems-api/php-client.git",
+                "reference": "baea9480ff1814eaa187dfd95b236381fe54fa8e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ems-api/php-client/zipball/baea9480ff1814eaa187dfd95b236381fe54fa8e",
+                "reference": "baea9480ff1814eaa187dfd95b236381fe54fa8e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=7.2.5"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.17",
+                "phpstan/phpstan": "^0.12.60",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "EmsApi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Email Marketing Software library for PHP",
+            "homepage": "https://github.com/ems-api/php-client",
+            "support": {
+                "issues": "https://github.com/ems-api/php-client/issues",
+                "source": "https://github.com/ems-api/php-client/tree/v1.0.0"
+            },
+            "time": "2021-02-23T09:17:02+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.1.0"
+}

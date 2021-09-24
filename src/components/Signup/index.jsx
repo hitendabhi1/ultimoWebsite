@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import mailchimp from "@mailchimp/mailchimp_marketing";
 
 // components
 import SignUpSection from "./signUpSection";
@@ -13,10 +12,10 @@ class SignUp extends Component {
 
   render() {
     return (
-      <>
-        <SignUpSection />
-        <Footer />
-      </>
+        <>
+          <SignUpSection />
+          <Footer />
+        </>
     );
   }
 }

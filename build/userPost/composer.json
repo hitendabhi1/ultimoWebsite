@@ -1,0 +1,5 @@
+{
+    "require": {
+        "ems-api/php-client": "^1.0"
+    }
+}
